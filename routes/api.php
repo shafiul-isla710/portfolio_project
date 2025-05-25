@@ -1,21 +1,15 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProjectController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-//page route
-Route::get('/app',[HomeController::class, 'page'])->name('home');
-Route::get('/contact',[ContactController::class, 'page'])->name('contact');
-Route::get('/project',[ProjectController::class, 'page'])->name('project');
-Route::get('/resume',[ResumeController::class, 'page'])->name('resume');
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
 
 
 //api route
