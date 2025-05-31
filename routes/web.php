@@ -5,17 +5,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProjectController;
+use Inertia\Inertia;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 //page route
-Route::get('/app',[HomeController::class, 'page'])->name('home');
-Route::get('/contact',[ContactController::class, 'page'])->name('contact');
-Route::get('/project',[ProjectController::class, 'page'])->name('project');
-Route::get('/resume',[ResumeController::class, 'page'])->name('resume');
+Route::get('/',[HomeController::class, 'HomePage'])->name('homePage');
+Route::get('/about',[HomeController::class, 'AboutPage'])->name('aboutPage');
+Route::get('/resume',[ResumeController::class,'ResumePage'])->name('resumePage');
+Route::get('/project',[ProjectController::class,'ProjectPage'])->name('projectPage');
+Route::get('/contact',[ContactController::class,'ContactPage'])->name('contactPage');
 
 
 //api route
@@ -31,3 +30,6 @@ Route::get('/experienceData',[ResumeController::class,'experienceData'])->name('
 Route::get('/educationData',[ResumeController::class,'educationData'])->name('educationData');
 Route::get('/skillData',[ResumeController::class,'skillData'])->name('skillData');
 Route::get('/languageData',[ResumeController::class,'languageData'])->name('languageData');
+
+//cookie practice
+Route::post('/cookie',[HomeController::class,'contactRegistration']);

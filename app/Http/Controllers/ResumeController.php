@@ -8,10 +8,13 @@ use App\Models\Language;
 use App\Models\Education;
 use App\Models\Experience;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ResumeController extends Controller
 {
-    public function page(){
+    public function ResumePage(){
+
+        return Inertia::render('ResumePage');
 
     }
     public function resumeLink(Request $request){
