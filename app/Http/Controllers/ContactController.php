@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
     public function ContactPage()
     {
-        return Inertia::render('ContactPage');
+        $seo = DB::table('seo_properties')->where('pageName','contact')->first();
+        return Inertia::render('ContactPage', compact('seo'));
     }
     public function contactRegistration(Request $request)
     {

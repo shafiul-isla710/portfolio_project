@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 
+use Inertia\Inertia;
 use App\Models\About;
 use App\Models\Social;
 use App\Models\HeroProperty;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function page(){
-        return Inertia::render('text');
-    }
+   
     public function HomePage(){
-        return Inertia::render('HomePage');
+        $seo = DB::table('seo_properties')->where('pageName','home')->first();
+        return Inertia::render('HomePage',compact('seo'));
     }
     public function AboutPage(){
         return Inertia::render('AboutPage');

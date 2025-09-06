@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Skill;
 use App\Models\Resume;
 use App\Models\Language;
 use App\Models\Education;
 use App\Models\Experience;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\Support\Facades\DB;
 
 class ResumeController extends Controller
 {
     public function ResumePage(){
-
-        return Inertia::render('ResumePage');
+        
+        $seo = DB::table('seo_properties')->where('pageName','resume')->first();
+        return Inertia::render('ResumePage', compact('seo'));
 
     }
     public function resumeLink(Request $request){
